@@ -1,0 +1,33 @@
+##Simulacion de serie de tiempo##
+# Vamos a simular 1 indicador
+# Para la simulacipon en principio necesitamos alguna información
+# Valor maximo, valor minimo, el numero de datos
+
+
+
+##En este ejemplo vamos a proponer la población en México
+#Que el valor minimo seran 100, max 120, 15 datos que inicie en 2000
+
+pob <- sample(100:120,15,replace=F)
+pob
+
+##La convertimos en serie de tiempo
+
+pobts <- ts(pob, frequency = 1, start = (2000))
+
+end(pobts)##en que año termina
+start(pobts)##en que año empieza
+plot(pobts)##
+plot(aggregate(pobts))
+
+
+
+
+###Ejemplo
+##Bajer de inegi la ocupacion de las personas
+##importar csv
+
+inforr4<- read.csv("C://Users//USUARIO//Documents//infor.csv")
+
+inforr4ts<-ts(inforr4,frequency = 4,start=2005,end = 2017)
+plot(inforr4ts, xlab="año", ylab="Tasa de informalidad laboral",ylim=c(50,60),xlim=c(2005,2017),main="Grafica")
