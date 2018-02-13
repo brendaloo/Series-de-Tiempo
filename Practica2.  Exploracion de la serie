@@ -1,0 +1,48 @@
+###AirPassengers###
+##install.packages("forecast") instalar paqueteria de internet
+##require (forecast) (esta en nota porque ya estaba cargada la paqueteria)
+
+View(AirPassengers)
+
+help("AirPassengers") ##ayuda dentro de R
+??AirPassengers ##Busca en internet
+
+class(AirPassengers) ##Es para ver que tipo de datos es
+start(AirPassengers) ##Conocer en que año incia
+print(AirPassengers) #Muestra todos los datos
+length(AirPassengers) ##Cuantos datos tiene la serie de tiempo
+head(AirPassengers, n=8) ##Estamos pidiendo que muestre los primeros 8 datos
+tail(AirPassengers, n=8)##Estamos pidiendo que nos muestre los ultimos 8 datos
+plot(AirPassengers) ##Grafica
+plot(AirPassengers, xlab="Años" , ylab="Numero de pasajeros" , type="b") ##Le damos condiciones a nuestra grafica
+
+
+
+##Ejercicio en clase
+##De la pagina del inegi bajar la tasa informalidad laboral
+#En valores relativos a nivel nacional, todos los trimestres desde 2005 hasta 2007
+#Importar la base a R y la declaran ST
+#con el iniciom fin, frecuencia, una vez declarada la ST, usar la funcion
+#Print, length, head y tail (con 10 datos) y explicarlas 
+#Graficar la ST con 3 tipos de graficas diferentes y 3 colores
+
+#Investigar y usar las funciones
+#time, deltar, cycle, y frecuency y explicar para que sirven
+
+pob <- read.csv("C://Users//USUARIO//Desktop//enoe.csv")
+pob
+pobts <-ts(pob, frequency = 4, star=(2005), end=(2017))
+
+print(pobts) #Muestra todos los datos
+length(pobts) ##Cuantos datos tiene la serie de tiempo
+head(pobts, n=10)
+tail(pobts, n=10)
+plot(pobts, xlab="Años" , ylab="tasa de Informalidad" , type="c", col="red")
+plot(pobts, xlab="Años" , ylab="tasa de Informalidad" , type="o", col="blue")
+plot(pobts, xlab="Años" , ylab="tasa de Informalidad" , type="h", col="red")
+help(plot)
+help(cycle)
+
+time(pobts) ##crea el vector de tiempos en el que se tomaron muestras de una serie de tiempo.
+cycle(pobts) ##da las posiciones en el ciclo de cada observación.
+frequency(pobts) ##devuelve el número de muestras por unidad de tiempo y deltatel intervalo de tiempo entre las observaciones
