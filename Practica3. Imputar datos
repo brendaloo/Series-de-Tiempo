@@ -1,0 +1,29 @@
+###Datos de registro de enfermos al 2000 al 2010 semestral
+# 350,358,367,367,380,388,402,415,432,450,
+# NA, NA, NA, NA, 367, 342, 324, 315, 310, 298
+
+#GRAFIQUEN ESTE VECTOR
+# DECLAREN Y GRAFIQUEN ESTA SERIE
+# IMPUTAR DATOS FALATENTES
+#GRAFIQUEN LA NUEVA SERIE CON LA IMPUTACION
+# POR ULTIMO GRAFIQUEN LA SERIE DE TIEMPO
+ #EuStockMarkets con la funcion plot... que observan??
+#Ahora grafiquen EuStockmarkets con la siguiente funcion
+# plot.ts(EuStockMarkets, col=1:4)
+ENFERMOS <-c(350,358,367,367,380,388,402,415,432,450,NA,NA,NA,NA,367,342,324,315,310,298)
+ENFERMOSTs <- ts(ENFERMOS,frequency = 2)
+plot(ENFERMOSTs)
+
+##para imputar
+mean(ENFERMOSTs, na.rm=T)
+#Imputando por la media
+ENFERMOSTs [11:14] <- mean(ENFERMOSTs, na.rm=T)
+ENFERMOSTs
+plot(ENFERMOSTs)
+
+
+
+
+plot(EuStockMarkets)
+# para poder comparar mejor
+ts.plot(EuStockMarkets, col=1:4)
