@@ -53,3 +53,25 @@ lines(desocmod2$mean,col="black")
 lines(desocmod3$mean,col="red")
 lines(desocmod4$mean,col="orange")
 legend("topleft",lty=1, col=c("green","black","red","orange"), legend = c("media","ingenuo","ingenuo estacional","deriva"))
+
+
+## PARA SACAR LOS DATOS AJUSTADOS
+X11()
+plot(desocmod1, main="Tasa de desocupación trimestral", col = "green")
+lines(desocmod1$fitted,col="green")
+lines(desocmod2$fitted,col="black")
+lines(desocmod3$fitted,col="red")
+lines(desocmod4$fitted,col="orange")
+legend("topleft",lty=1, col=c("green","black","red","orange"), legend = c("media","ingenuo","ingenuo estacional","deriva"))
+
+names(desocmod1)
+
+
+
+
+
+
+###### EJERCICIO CON UNA SERIE DE TIEMPO #####
+#Apliquen los 4 metodos de pronosticos y grafiquelos
+# segun las graficas elijan que metodo es el mejor para pronosticar
+# y tambien grafiquen los datos ajustados y planteen segun su grafica cual es el metodo que mejor ajusta a los datos reales.
