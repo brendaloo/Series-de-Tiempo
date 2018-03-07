@@ -1,0 +1,55 @@
+## MODELOS LIENALES PARA PRONOSTICAR
+# Son la aplicacion de pronosticos lineales como los metodos
+# de la media, el ingenuo, el ingenuo estacional y el de la deriva del pronostico
+
+#######  INGENUO #########
+# Esta basada en la ultima observacion que arroja la serie de tiempo, esta basado en la ultima observacion 
+# mas importante es la ultima.
+
+# FUNCION EN R: ----->  naive(serie, h=num pronosticos)
+# h= numero de pronosticos que requiero
+
+
+##### METODO DE LA MEDIA #######
+# Este metodo le da el mismo peso a tosos lod datos u observaciones,
+# se asume con este metodo que todas las observaciones tienen la misma importancia por lo que
+# el pronostico es un promedio de todas las observaciones.
+# FUNCION EN R: ---------> meanf(serie, h= numero de pronosticos)
+
+
+
+####### INGENUO ESTACIONAL #######
+# Este metodo se utiliza en ST con alta eatacionalidad, este proceso consiste en darle el mayor precio o la
+# mayor ponderacion al dato del mismo periodo en el año anterior, p.ejem. trimestre 2 del año 2005 es igual al 
+# trimestre 2 del 2006.
+
+# FUNCION EN R: ----> snaive(serie, h=numero de pronosticos)
+
+
+
+#### METODO DE LA DERIVA #####
+# Este metodo consiste en que el pronostico puede incrementar o reducirse sobre el tiempo, dependiendo del promedio
+# de los cambios historicos de la ST
+
+# FUNCION EN R: ------> rwf(serie, h=numero de pronosticos, drift=TRUE)
+
+
+
+###### ejercicio #####
+des0 <-read.csv ("C://Users//Sala-H20//Documents//desocupacion.csv")
+dests <- ts(des0,start=2005,frequency = 4)
+install.packages("fpp")
+require (fpp)
+dests
+desocmod1 <- meanf(dests, h=10)
+desocmod2 <- naive(dests, h=10)
+desocmod3 <- snaive(dests, h=10)
+desocmod4 <- rwf(dests, h=10,drift=TRUE)
+
+X11()
+plot(desocmod1, main="Tasa de desocupación trimestral", col = "green")
+lines(desocmod1$mean,col="green")
+lines(desocmod2$mean,col="black")
+lines(desocmod3$mean,col="red")
+lines(desocmod4$mean,col="orange")
+legend("topleft",lty=1, col=c("green","black","red","orange"), legend = c("media","ingenuo","ingenuo estacional","deriva"))
