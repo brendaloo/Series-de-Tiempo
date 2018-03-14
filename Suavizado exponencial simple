@@ -1,0 +1,75 @@
+#  Accidentes de tránsito terrestre en zonas urbanas y suburbanas (INEGI)
+
+accidentes <- data.frame(read.csv("C://Users//USUARIO//Documents//accidentes.csv"))
+
+View(accidentes)
+
+
+##OTRO MODO
+#acci<-acci[5:16,-1]
+#acci
+#elimando columnas
+#trs<-t(t(acci)) #para convertir en caracter sin modificar los años de nuestros datos
+#ctrs<-c(trs)#genera un array bonito
+#accts<-ts(ctrs,frequency = 12, start=1997)
+#accts
+
+#modo1
+x<-rbind(accidentes)[5:16,]
+View(x)
+
+y<- as.matrix(rbind(x)[,2])
+View(y)
+
+a<- as.matrix(rbind(x)[,3])
+b<- as.matrix(rbind(x)[,4])
+c<- as.matrix(rbind(x)[,5])
+d<- as.matrix(rbind(x)[,6])
+e<- as.matrix(rbind(x)[,7])
+f<- as.matrix(rbind(x)[,8])
+g<- as.matrix(rbind(x)[,9])
+h<- as.matrix(rbind(x)[,10])
+i<- as.matrix(rbind(x)[,11])
+j<- as.matrix(rbind(x)[,12])
+k<- as.matrix(rbind(x)[,13])
+l<- as.matrix(rbind(x)[,14])
+m<- as.matrix(rbind(x)[,15])
+n<- as.matrix(rbind(x)[,16])
+o<- as.matrix(rbind(x)[,17])
+p<- as.matrix(rbind(x)[,18])
+q<- as.matrix(rbind(x)[,19])
+r<- as.matrix(rbind(x)[,20])
+s<- as.matrix(rbind(x)[,21])
+
+
+
+serie <- rbind(y,a,b,c,d,e,f,g,h,i,j,k,l,m,n,o,p,q,r,s)
+
+View(serie)
+
+accidts<-ts(serie,frequency = 12,start=1997) 
+
+install.packages("fpp")
+require(fpp)
+
+
+
+
+
+########SUAVIZADO EXPONENCIAL SIMPLE####### (SES)
+
+x11()
+plot(accidts)
+mod1 <- ses(accidts, alpha = .1,h=12)
+mod2 <- ses(accidts, alpha = .5,h=12)
+mod3 <- ses(accidts, alpha = .9,h=12)
+
+
+names(mod1)
+
+plot(mod1,ylab="accidentes", xlab="año", main= "Número de accidentes", type="o")
+lines(mod1$mean,col="brown",type="o")
+lines(mod2$mean,col="pink",type="o")
+lines(mod3$mean,col="blue",type="o")
+legend("topleft", lty=1,col=c("black","brown","pink","blue"), c("Datos originales", expression(alpha==.1),expression(alpha==.5),expression(alpha==.9)), pch=1)
+
