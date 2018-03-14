@@ -1,0 +1,239 @@
+Estado de Mexico
+Tasa de desocupacion para 2005 y 2015
+
+require(foreign)
+ 
+
+Primer trimestre del 2005
+
+sdemt105<- data.frame(read.dbf("C://Users//Sala-G24//Documents//SOCIO2005//sdemt105.dbf"))
+deso105 <- subset(sdemt105,ENT==15 & CLASE3==6)
+PEA105 <- subset(sdemt105,ENT==15 & as.numeric(EDA)>=16 & as.numeric(EDA)<=66)
+NUM_PEA105<-nrow(PEA105)
+NUM_DESO105 <-nrow(deso105)                  
+TASA_DESO105 <- (NUM_DESO105/NUM_PEA105)*100
+TASA_DESO105 
+
+La tasa de desocupacion para el Edo. de Mexico primer trimestre es 3.002
+
+
+
+Segundo trimestre del 2005
+
+sdemt205<- data.frame(read.dbf("C://Users//Sala-G24//Documents//SOCIO2005//sdemt205.dbf"))
+deso205 <- subset(sdemt205,ENT==15 & CLASE3==6)
+PEA205 <- subset(sdemt205,ENT==15 & as.numeric(EDA)>=16 & as.numeric(EDA)<=66)
+NUM_PEA205<-nrow(PEA205)
+NUM_DESO205 <-nrow(deso205)                  
+TASA_DESO205 <- (NUM_DESO205/NUM_PEA205)*100
+TASA_DESO205 
+
+La tasa de desocupacion para el Edo. de Mexico segundo trimestre es 2.79
+
+
+
+
+
+
+Tercer trimestre del 2005
+
+sdemt305<- data.frame(read.dbf("C://Users//Sala-G24//Documents//SOCIO2005//sdemt305.dbf"))
+deso305 <- subset(sdemt305,ENT==15 & CLASE3==6)
+PEA305 <- subset(sdemt305,ENT==15 & as.numeric(EDA)>=16 & as.numeric(EDA)<=66)
+NUM_PEA305<-nrow(PEA305)
+NUM_DESO305 <-nrow(deso305)                  
+TASA_DESO305 <- (NUM_DESO305/NUM_PEA305)*100
+TASA_DESO305 
+
+La tasa de desocupacion para el Edo. de Mexico tercer trimestre es 2.95
+
+
+
+
+
+Cuarto trimestre del 2005
+
+sdemt405<- data.frame(read.dbf("C://Users//Sala-G24//Documents//SOCIO2005//sdemt405.dbf"))
+deso405 <- subset(sdemt405,ENT==15 & CLASE3==6)
+PEA405 <- subset(sdemt405,ENT==15 & as.numeric(EDA)>=16 & as.numeric(EDA)<=66)
+NUM_PEA405<-nrow(PEA405)
+NUM_DESO405 <-nrow(deso405)                  
+TASA_DESO405 <- (NUM_DESO405/NUM_PEA405)*100
+TASA_DESO405 
+
+La tasa de desocupacion para el Edo. de Mexico cuarto trimestre es 2.27
+
+
+
+2015
+
+Primer trimestre del 2015
+
+sdemt115<- data.frame(read.dbf("C://Users//Sala-G24//Documents//SOCIO2015//SDEMT115.dbf"))
+deso115 <- subset(sdemt115,ENT==15 & CLASE3==6)
+PEA115 <- subset(sdemt115,ENT==15 & as.numeric(EDA)>=16 & as.numeric(EDA)<=66)
+NUM_PEA115<-nrow(PEA115)
+NUM_DESO115 <-nrow(deso115)                  
+TASA_DESO115 <- (NUM_DESO115/NUM_PEA115)*100
+TASA_DESO115 
+
+La tasa de desocupacion para el Edo. de Mexico primer trimestre es 3.008
+
+
+
+Segundo trimestre del 2015
+
+sdemt215<- data.frame(read.dbf("C://Users//Sala-G24//Documents//SOCIO2015//SDEMT215.dbf"))
+deso215 <- subset(sdemt215,ENT==15 & CLASE3==6)
+PEA215 <- subset(sdemt215,ENT==15 & as.numeric(EDA)>=16 & as.numeric(EDA)<=66)
+NUM_PEA215<-nrow(PEA215)
+NUM_DESO215 <-nrow(deso215)                  
+TASA_DESO215 <- (NUM_DESO215/NUM_PEA215)*100
+TASA_DESO215 
+
+La tasa de desocupacion para el Edo. de Mexico segundo trimestre es 3.34
+
+
+
+
+
+
+Tercer trimestre del 2015
+
+sdemt315<- data.frame(read.dbf("C://Users//Sala-G24//Documents//SOCIO2015//sdemt315.dbf"))
+deso315 <- subset(sdemt315,ENT==15 & CLASE3==6)
+PEA315 <- subset(sdemt315,ENT==15 & as.numeric(EDA)>=16 & as.numeric(EDA)<=66)
+NUM_PEA315<-nrow(PEA315)
+NUM_DESO315 <-nrow(deso315)                  
+TASA_DESO315 <- (NUM_DESO315/NUM_PEA315)*100
+TASA_DESO315 
+
+La tasa de desocupacion para el Edo. de Mexico tercer trimestre es 3.2
+
+
+
+
+
+Cuarto trimestre del 2015
+
+sdemt415<- data.frame(read.dbf("C://Users//Sala-G24//Documents//SOCIO2015//sdemt415.dbf"))
+deso415 <- subset(sdemt415,ENT==15 & CLASE3==6)
+PEA415 <- subset(sdemt415,ENT==15 & as.numeric(EDA)>=16 & as.numeric(EDA)<=66)
+NUM_PEA415<-nrow(PEA415)
+NUM_DESO415 <-nrow(deso415)                  
+TASA_DESO415 <- (NUM_DESO415/NUM_PEA415)*100
+TASA_DESO415 
+
+La tasa de desocupacion para el Edo. de Mexico cuarto trimestre es 3.023
+
+
+
+
+
+Tasa de asalariados para 2005 y 2015
+
+Primer trimestre del 2005
+
+asalariado <- subset(sdemt105,ENT==15 & MH_COL==2)
+ocupado <- subset(sdemt105,ENT==15 & CLASE2==1)
+ocupados <-nrow(ocupado)
+asalariados <-nrow(asalariado)
+tasaasalariados105 <- ((asalariados/ocupados)*100)
+tasaasalariados105
+
+La tasa de asalariados para el Edo. de Mexico primer trimestre es 37.42
+
+
+Segundo trimestre del 2005
+
+asalariado <- subset(sdemt205,ENT==15 & MH_COL==2)
+ocupado <- subset(sdemt205,ENT==15 & CLASE2==1)
+ocupados <-nrow(ocupado)
+asalariados <-nrow(asalariado)
+tasaasalariados205 <- ((asalariados/ocupados)*100)
+tasaasalariados205
+
+La tasa de asalariados para el Edo. de Mexico segundo trimestre es 37.68
+
+
+
+
+Tercer trimestre del 2005
+
+asalariado <- subset(sdemt305,ENT==15 & MH_COL==2)
+ocupado <- subset(sdemt305,ENT==15 & CLASE2==1)
+ocupados <-nrow(ocupado)
+asalariados <-nrow(asalariado)
+tasaasalariados305 <- ((asalariados/ocupados)*100)
+tasaasalariados305
+
+La tasa de asalariados para el Edo. de Mexico tercer trimestre es 37.70
+
+
+
+
+
+Cuarto trimestre del 2005
+
+asalariado <- subset(sdemt405,ENT==15 & MH_COL==2)
+ocupado <- subset(sdemt405,ENT==15 & CLASE2==1)
+ocupados <-nrow(ocupado)
+asalariados <-nrow(asalariado)
+tasaasalariados405 <- ((asalariados/ocupados)*100)
+tasaasalariados405
+
+La tasa de asalariados para el Edo. de Mexico cuarto trimestre es 39.13
+
+
+
+
+
+2015
+
+Primer trimestre del 2015
+
+asalariado <- subset(sdemt115,ENT==15 & MH_COL==2)
+ocupado <- subset(sdemt115,ENT==15 & CLASE2==1)
+ocupados <-nrow(ocupado)
+asalariados <-nrow(asalariado)
+tasaasalariados115 <- ((asalariados/ocupados)*100)
+tasaasalariados115
+
+La tasa de asalariados para el Edo. de Mexico primer trimestre es 39.68
+
+
+Segundo trimestre del 2015
+
+asalariado <- subset(sdemt215,ENT==15 & MH_COL==2)
+ocupado <- subset(sdemt215,ENT==15 & CLASE2==1)
+ocupados <-nrow(ocupado)
+asalariados <-nrow(asalariado)
+tasaasalariados215 <- ((asalariados/ocupados)*100)
+tasaasalariados215
+
+La tasa de asalariados para el Edo. de Mexico segundo trimestre es 39.63
+
+
+
+Tercer trimestre del 2015
+
+asalariado <- subset(sdemt315,ENT==15 & MH_COL==2)
+ocupado <- subset(sdemt315,ENT==15 & CLASE2==1)
+ocupados <-nrow(ocupado)
+asalariados <-nrow(asalariado)
+tasaasalariados315 <- ((asalariados/ocupados)*100)
+tasaasalariados315
+
+La tasa de asalariados para el Edo. de Mexico tercer trimestre es 39.75
+
+
+Cuarto trimestre del 2015
+
+asalariado <- subset(sdemt415,ENT==15 & MH_COL==2)
+ocupado <- subset(sdemt415,ENT==15 & CLASE2==1)
+ocupados <-nrow(ocupado)
+asalariados <-nrow(asalariado)
+tasaasalariados415 <- ((asalariados/ocupados)*100)
+tasaasalariados415
+
+La tasa de asalariados para el Edo. de Mexico cuarto trimestre es 39.82
