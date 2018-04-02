@@ -1,0 +1,25 @@
+# De ENOE, Variable: DUR_EST; 4 Trimestre, Año 2017
+# Clasificación de la población ocupada por duración de la jornada laboral
+
+# 1) Ausentes temporales con vínculo laboral
+# 2) Menos de 15 horas
+# 3) De 15 a 34 horas
+# 4) De 35 a 48 horas
+# 5) Más de 48 horas
+# 6) No especificado
+
+install.packages("foreign")
+require(foreign)
+sdemt417<- read.dbf("C://Users//Brenda//Documents//SERIES//sdemt417.dbf")
+View(sdemt417)
+table(sdemt417$DUR_EST)
+table(sdemt417$DUR_EST==0) #222,224
+table(sdemt417$DUR_EST==1) #3153
+table(sdemt417$DUR_EST==2) #10959
+table(sdemt417$DUR_EST==3) #28346
+table(sdemt417$DUR_EST==4) #78668
+table(sdemt417$DUR_EST==5) #46898
+table(sdemt417$DUR_EST==6) #1372
+
+
+# Total de observaciones = 391620
