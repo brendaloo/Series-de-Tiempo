@@ -1,0 +1,31 @@
+#EJERCICIO
+
+#Elegir una st con tendencia y realizar 3 graficas aplicando todos los modelos
+#Con valores ajustados
+#Pronosticos
+#Ajustados y pronosticos
+
+#Analizar y justificar con que modelo se queda
+#SES, holt, h-exponencial, aditivo amortiguado, multi amortiguado
+
+#Esta misma serie la cortas 4 o 5 periodos antes de la ultima observacion y grafican ajustados y pronosticos
+
+disney <- read.csv("C://Users//USUARIO//Documents//disney.csv")
+disneyts <- ts(disney, start=2015, frequency = 12)
+
+
+require(fpp)
+##SES
+mod1<-ses(disneyts,h=5,initial = "simple", alpha = .1)
+mod1$fitted
+disneyts
+##Metodo Holt Lineal
+mod2<- holt(disneyts, alpha = .8, beta=.5, initial = "simple",h=5)
+
+##GRAFICA
+x11()
+plot(mod1)
+lines(mod1$fitted, col="green")
+lines(mod2$fitted, col="blue")
+lines(mod1$mean, col="green")
+lines(mod2$mean, col="blue")
