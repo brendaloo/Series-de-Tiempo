@@ -1,0 +1,11 @@
+x11()
+plot(AirPassengers)
+
+##para convertirla en estacionaria
+
+x11()
+plot(log(AirPassengers))
+
+##Para la diferenciacion (asi ya la haces estacionaria)
+x11()
+plot(diff(log(AirPassengers)))
