@@ -1,0 +1,21 @@
+pib<-read.csv("C://Users//USUARIO//Documents//PIB CHIDO4eeewewewew.csv", header = F)
+pibts<-ts(pib,start=1961,frequency = 1)
+require(fpp)
+mod1<-auto.arima(pibts,seasonal=F)
+mod1
+x11()
+plot(forecast(mod1,h=10))
+##ARIMA(0,1,2)
+#ECUACION Yt'=(θ1et-1)+(θ2et-1)+(et)
+#Yt'=-.6521et-1+(-.2041)et-1+et
+
+
+###Con la función autoarima encontrar el modelo arima de las siguientes series de tiempo y plantearlo en ecuacion
+
+apple<-read.csv("C://Users//USUARIO//Downloads//apple.csv")
+applets<-ts(apple,start=2017,frequency = 252)
+mod2<-auto.arima(applets,seasonal=F)
+mod2
+x11()
+plot(forecast(mod2,h=10))
+##ARIMA(0,1,0) el modelo arima no es un buen modelo para pronosticar esta serie accionaria
