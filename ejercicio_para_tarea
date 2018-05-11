@@ -1,0 +1,9 @@
+##    EJERCICIOS
+## 1) Bajar serie historica del salario minimo y la inflacion y realizar pronóstico con un modelo holt lineal y arima no estacional
+## 2) De dos series estacionales (las que quieran) aplica los modelos arima estacional y pronosticar estas series 
+
+
+
+##1)
+salarios<-read.csv("C://Users//USUARIO//Documents//salarios.csv")
+salariost<-ts(salarios,frequency=4,start=1982)
