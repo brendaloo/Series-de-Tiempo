@@ -1,0 +1,58 @@
+require(foreign)
+install.packages("questionr")
+require(questionr)
+coe1<-read.dbf("C://Users//Brenda//Documents//BASES_ENOE//coe1t105.dbf")
+coe2<-read.dbf("C://Users//Brenda//Documents//BASES_ENOE//coe2t105.dbf")
+sdem<-read.dbf("C://Users//Brenda//Documents//BASES_ENOE//sdemt105.dbf")
+
+##PEGAR LOS CUESTIONARIOS
+cues<- merge(coe1,coe2)
+
+##base sdem filtrada con edad de 15 a 97 (para ir comprobando)
+sdemf <-subset(sdem,sdem$EDA>=15 & sdem$EDA<=97)
+
+
+##CONVERTIR LAS VARIABLES FACTOR A CARACTER PARA DESPUES HACERLAS NUMERICAS
+cues$P1<- as.numeric(as.character(cues$P1))
+cues$P1A1<- as.numeric(as.character(cues$P1A1))
+cues$P1A2<- as.numeric(as.character(cues$P1A2))
+cues$P1C<- as.numeric(as.character(cues$P1C))
+cues$P1D<- as.numeric(as.character(cues$P1D))
+cues$P1E<- as.numeric(as.character(cues$P1E))
+cues$EDA<- as.numeric(as.character(cues$EDA))
+ocupa$P5C_THRS<-as.numeric(as.character(ocupa$P5C_THRS))
+ocupa$P5D<- as.numeric(as.character(ocupa$P5D))
+ocupa$P5F<- as.numeric(as.character(ocupa$P5F))
+ocupa$EDA<- as.numeric(as.character(ocupa$EDA))
+ocupa$P8_4<- as.numeric(as.character(ocupa$P8_4))
+ocupa$P8_9<- as.numeric(as.character(ocupa$P8_9))
+ocupa$P8A<- as.numeric(as.character(ocupa$P8A))
+sdem$EDA<- as.numeric(as.character(sdem$EDA))
+ocupa$P6B2<- as.numeric(as.character(ocupa$P6B2))
+ocupa$P6C<- as.numeric(as.character(ocupa$P6C))
+ocupa$P6B1<- as.numeric(as.character(ocupa$P6B1))
+
+##POBLACION OCUPADA DE 15 A 97 AÑOS
+ocupa <-subset(cues,(cues$EDA>=15 & cues$EDA<=97)&(cues$P1==1 | cues$P1A1==1 | cues$P1A2==2 |cues$P1C==1|cues$P1C==2|cues$P1C==3|cues$P1C==4|cues$P1D==1|cues$P1E==1)) ##SIN FACTOR DE EXPANSIÓN
+sum(wtd.table(ocupa$P3,weights = ocupa$FAC)) ## con factor de expansion 
+
+
+## población ocupada que se encuentra trabajando menos de 35 horas 
+## a la semana por razones de mercado
+ocupada_menos35<-subset(ocupa,(ocupa$P5C_THRS<35)&(ocupa$P5D==2|ocupa$P5D==9) &(ocupa$P5F==05|ocupa$P5F==06)&(ocupa$P8_4==4|ocupa$P8_9==9 |(ocupa$P8A==4|ocupa$P8A==9)))
+
+table(sdemf$S_CLASIFI)#2085
+
+
+## población ocupada que se encuentra trabajando mas de 35 horas semanales con ingresos MENSUALES inferiores al SM
+ocupada_mas35<-subset(ocupa,(ocupa$P5C_THRS>35)&((ocupa$P6B2>=1&ocupa$P6B2<=1499)| (ocupa$P6C==1|ocupa$P6C==2)))
+
+
+##POBLACION OCUPADA QUE LABORA MAS DE 48 HORAS GANANDO HASTA DOS SALARIOS MINIMOS
+ocupada_mas48<-subset(ocupa,(ocupa$P5C_THRS>48)&((ocupa$P6B2>=1 & ocupa$P6B2<=2900) |(ocupa$P6C==1|ocupa$P6C==2)))
+
+
+sum(table(sdemf$TCCO))
+#1)2399
+#2)8654
+#3)10631
